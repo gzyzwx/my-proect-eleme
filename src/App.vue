@@ -12,27 +12,30 @@
         <a v-link="{path:'/seller'}">商家</a>
       </div>
     </div>
-    <router-view :seller="seller"></router-view>
-    <!-- <img class="logo" src="./assets/logo.png"> -->
-    <!-- <hello></hello> -->
+    <router-view :seller="seller" keep-alive></router-view>
   </div>
 </template>
 
 <script>
   // import Hello from './components/Hello'
   import VHeader from './components/header/header'
-
+  import {urlParse} from 'common/js/util.js'
   const ERROR = 0
 
   export default {
     data() {
       return {
-        seller: {}
+        seller: {
+          id: (() => {
+            let queryParam = urlParse()
+            return queryParam.id
+          })()
+        }
       }
     },
     created() {
       var self = this
-      this.$http.get('/api/seller').then(
+      this.$http.get('/api/seller?id=' + this.seller.id).then(
         // es5写法
         // function(json) {
         //   console.log(json)
@@ -45,7 +48,7 @@
           // console.log(res)
           // console.log(res.body)
           if (res.body.errno === ERROR) {
-            self.seller = res.body.data
+            self.seller = Object.assign({}, self.seller, res.body.data)
           }
         },
         (err) => {

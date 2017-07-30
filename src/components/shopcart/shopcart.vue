@@ -394,7 +394,7 @@ import BScroll from 'better-scroll'
 						.borderbottomOne(rgba(7,17,27,0.1));
 						.name{
 							line-height: 24px;
-							font-size: 24px;
+							font-size: 20px;
 							color: rgb(7,17,27);
 						}
 						.price{

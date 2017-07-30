@@ -60,6 +60,7 @@
 		},
 		methods: {
 			select(type, event) {
+				// window.alert(event._constructed)
 				if (!event._constructed) {
 					return
 				}
@@ -82,7 +83,7 @@
 		.rating-type{
 			padding: 18px 0;
 			margin: 0 18px;
-			.borderbottomOne(rgb(7,17,27,0.1));
+			.borderbottomOne(rgba(7,17,27,0.1));
 			font-size: 0;
 			.block{
 				display: inline-block;
@@ -119,7 +120,7 @@
 			padding: 12px 18px;
 			line-height: 24px;
 			// border-bottom: 1px solid rgb(7,17,27,0.1);
-			.borderbottomOne(rgb(7,17,27,0.1));
+			.borderbottomOne(rgba(7,17,27,0.1));
 			color: rgb(147,153,159);
 			font-size: 0;
 			&.on{
